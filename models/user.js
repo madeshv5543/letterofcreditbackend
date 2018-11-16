@@ -40,13 +40,10 @@ const userSchema = new Schema({
     pincode : {
         type: String
     },
-    physicaladdress: {
+    address: {
         type: String
     },
     phoneNumber: {
-        type:String
-    },
-    seed: {
         type:String
     },
     created: {

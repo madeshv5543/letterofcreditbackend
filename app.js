@@ -31,8 +31,8 @@ router.get('/', function(req, res) {
 })
 require('./auth/auth')(router);
 // require('./campainer/campaign')(router);
-// require('./sponsers/sponser')(router)
-// require('./user/user')(router);
+require('./user/buyser')(router)
+require('./user/user')(router);
 app.use('/api', router);
 app.use((err, req, res, next) => {
   // handle unexpected errors

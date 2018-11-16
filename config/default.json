@@ -1,7 +1,7 @@
 {
     "apiKey": "aTgfvD01IJzD0flVKXPM",
     "provider": "https://rinkeby.infura.io",
-    "mongoUri": "mongodb://localhost:27017/loc",
+    "mongoUri": "mongodb://user:password1@ds039281.mlab.com:39281/loc",
     "secret":"evenswallet",
     "port":3000,
     "wallet": {
