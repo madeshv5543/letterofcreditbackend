@@ -46,6 +46,19 @@ const userSchema = new Schema({
     phoneNumber: {
         type:String
     },
+    walletAddress: {
+        type : String,
+        unique : true
+    },
+    blockchainHost: {
+        type: String
+    },
+    blockchainExplore: {
+        type: String
+    },
+    contractAddress :{
+        type: String
+    },
     created: {
         type: Date,
         default: Date.now

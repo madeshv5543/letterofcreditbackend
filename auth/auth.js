@@ -49,21 +49,29 @@ module.exports = function(router) {
                     if(user){
                          res.json({ message: 'This Email already Exists.', status: 400, type: "Failure"})
                     }else{
+                        const seed  = lightwallet.keystore.generateRandomSeed();
+                        const wallet = walletUtils.getWallet(seed);
+                        const seedHash = encryptSeed(seed, password);
+                        const address =walletUtils.getWalletAddress(wallet)
                         const user = new User({
                             email,
                             password,
                             accountType,
+                            seed:seedHash,
+                            walletAddress:address,
                             username
                         })
                         const data = {
+                            address,
                             accountType,
+                            seed:seedHash,
                             email,
                             username
                         };
                         user.save()
                         .then( result => {
-                                token = createToken({email: email, phrase:password, accountType}, res);
-                                res.json({data, token,  status: 200, type: 'Success'});
+                                token = createToken({address: data.address, seed: seedHash, email: email, phrase:password, accountType}, res);
+                                res.json({data, token, seed, status: 200, type: 'Success'});
                             },err=>{
                                 res.json({message: err, status: 400, type: "Failure"})
                             }

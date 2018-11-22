@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const orderSchema = Schema({
     seller : { type: Schema.Types.ObjectId, ref:'User'},
     buyer : {type: Schema.Types.ObjectId, ref:'User'},
+    timeline: {type: Schema.Types.ObjectId, ref:'Timeline'},
     orderId : { type: String, unique:true},
     createdDate : {
         type: Date,
